@@ -16,7 +16,7 @@ public class Card extends Customer {
     /**
      * allows the customer to make a deposit to his account
      * @param amount the amount deisred to deposit
-     * @return the updated balance
+     * @return the updated balancegit
      */
     public double Deposit(double amount) {
 
