@@ -14,7 +14,11 @@ public class BankSystem {
     public static List<Customer> openedCustomer = readCustomer(OPEN_CUSTOMER_FILE_PATH);
     public static List<Customer> closedCustomer = readCustomer(CLOSED_CUSTOMER_FILE_PATH);
 
-
+    /**
+     * this method reads the customers from the csv file
+     * @param path the file path
+     * @return the customers list
+     */
     private static List<Customer> readCustomer(String path) {
         List<Customer> customers = new ArrayList<>();
 
@@ -44,14 +48,18 @@ public class BankSystem {
     }
 
     /**
-     * exports the current openedTickets and completedTickets to external files
+     * exports openCustomer and closedCustomer file paths
      */
     public static void export() {
         writeCustomers(OPEN_CUSTOMER_FILE_PATH, openedCustomer);
         writeCustomers(CLOSED_CUSTOMER_FILE_PATH, closedCustomer);
     }
 
-
+    /**
+     * This method writes to the csv file
+     * @param path the file path
+     * @param customers the customers list
+     */
     private static void writeCustomers(String path, Collection<Customer> customers) {
         File file = new File(path);
         try (FileWriter fw = new FileWriter(file)) {

@@ -26,6 +26,11 @@ public class Customer implements CustomerDetails, Comparator<Customer> {
         this.creditScore = creditScore;
     }
 
+    /**
+     * This allows the customer to view his account details
+     * @param username the username of the customer
+     * @param employee the object of the Employee class
+     */
     @Override
     public void ViewAccountDetails(String username, Employee employee) {
         if (employee.listUsernames.containsKey(username)) {

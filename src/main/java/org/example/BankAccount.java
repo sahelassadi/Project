@@ -18,11 +18,20 @@ public class BankAccount {
         this.balance = balance;
     }
 
+    /**
+     * This method allows to view Transaction history
+     * @param bankAccount the object of the BankAccount class
+     */
     public void TransactionHistory(BankAccount bankAccount) {
         Collections.sort(bankAccount.transaction);
         System.out.println(bankAccount.transaction);
     }
 
+    /**
+     * This method allows to view the balance of the bank account
+     * @param customer the object of the Customer class
+     * @param username the customer's username
+     */
     public void balance(Customer customer, String username) {
         System.out.println("Balance of " + username + ": " + customer.bankAccount.balance);
     }

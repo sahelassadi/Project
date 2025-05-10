@@ -34,7 +34,14 @@ public class Employee implements CustomerDetails {
         return true;
     }
 
-
+    /**
+     *  this method adds a new account
+     * @param name the customer name
+     * @param sin the sin of the customer
+     * @param dateOfBirth customer's date of birth
+     * @param emailAddress customer's email address
+     * @param creditScore customer's credit score
+     */
     public void addAccount(String name, int sin, String dateOfBirth, String emailAddress, int creditScore) {
         String username = emailAddress.substring(0, emailAddress.indexOf('@')).toLowerCase();
         Customer customer = new Customer(name, username, new BankAccount(), sin, dateOfBirth, emailAddress, creditScore);
@@ -45,6 +52,11 @@ public class Employee implements CustomerDetails {
         System.out.println("Account has been made.");
     }
 
+    /**
+     * This method closes a customer's account
+     * @param username the customer's username
+     * @param employee the employee object of employee class
+     */
     public void closeAccount(String username, Employee employee) {
         deletedCustomer.add(listUsernames.get(username));
         customerList.remove(listUsernames.get(username));
@@ -54,7 +66,12 @@ public class Employee implements CustomerDetails {
         System.out.println("Account has been closed");
     }
 
-
+    /**
+     * This method is abstract from the interface.
+     * It allows to view the customer's details
+     * @param username customer's username
+     * @param employee the employee object of the Employee class
+     */
     @Override
     public void ViewAccountDetails(String username, Employee employee) {
         System.out.println(employee.listUsernames.get(username));
@@ -75,7 +92,8 @@ public class Employee implements CustomerDetails {
 
     @Override
     public String toString() {
-        return "Deleted Customers: " + deletedCustomer;
+        return "Customer List" + customerList + "\n" +
+                "Deleted Customers: " + deletedCustomer;
     }
 
     public List<Customer> getCustomerList() {

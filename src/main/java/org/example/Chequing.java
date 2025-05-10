@@ -15,6 +15,13 @@ public class Chequing extends BankAccount {
         this.transaction = transaction;
     }
 
+    /**
+     * This method allows to deposit an amount of money in the chequing account
+     * @param amount the amount
+     * @param time time of transaction
+     * @param customer object of Customer class
+     * @param bankAccount object of BankAccount class
+     */
     public void deposit(Double amount, LocalDateTime time, Customer customer, BankAccount bankAccount) {
         customer.bankAccount.balance += amount;
         customer.bankAccount.transaction.add(new Transaction(Transaction.Type.GAIN, time, amount));
@@ -23,7 +30,13 @@ public class Chequing extends BankAccount {
 
     }
 
-
+    /**
+     * This method allows to withdraw an amount of money from the chequing account
+     * @param amount the amount of money
+     * @param time time of transaction
+     * @param customer object of Customer class
+     * @param bankAccount object of BankAccount class
+     */
     public void withdrawal(Double amount, LocalDateTime time, Customer customer, BankAccount bankAccount) {
         if (amount > customer.bankAccount.balance) {
             System.out.println("The amount wished to withdraw is over the balance of the account");
@@ -36,6 +49,10 @@ public class Chequing extends BankAccount {
         }
     }
 
+    /**
+     * This method allows to view Transaction history
+     * @param bankAccount the object of the BankAccount class
+     */
     public void TransactionHistory(BankAccount bankAccount) {
         Collections.sort(bankAccount.transaction);
         System.out.println(bankAccount.transaction);
