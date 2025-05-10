@@ -1,67 +1,66 @@
 package org.example;
 
-public class BankAccount extends Manager {
-    private String emailAddress;
-    private int dateOfBirth;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
 
-    public BankAccount(String emailAddress, int dateOfBirth) {
+public class BankAccount {
+    protected List<Transaction> transaction;
+    protected double balance;
 
+    public BankAccount() {
+        this.transaction = new ArrayList<>();
     }
 
-    public BankAccount(String name, int SIN, String emailAddress, int dateOfBirth) {
-
+    public BankAccount(List<Transaction> transaction, double balance) {
+        this.transaction = transaction;
+        this.balance = balance;
     }
 
-    /**
-     * opens a new account
-     * @param name the full name
-     * @param sin the Social Insurance Number
-     * @param emailAddress the email address
-     * @param dateOfBirth the date of birth
-     */
-    public void openAccount(String name, int sin, String emailAddress, int dateOfBirth) {
-
+    public void TransactionHistory(BankAccount bankAccount) {
+        Collections.sort(bankAccount.transaction);
+        System.out.println(bankAccount.transaction);
     }
 
-    /**
-     * closes an existing account
-     * @param name the full name
-     * @param sin the Social Insurance Number
-     * @param emailAddress the email address
-     * @param dateOfBirth the date of birth
-     */
-    public void closeAccount(String name, int sin, String emailAddress, int dateOfBirth) {
-
+    public void balance(Customer customer, String username) {
+        System.out.println("Balance of " + username + ": " + customer.bankAccount.balance);
     }
+
 
     @Override
     public boolean equals(Object o) {
-
+        if (o == null || getClass() != o.getClass()) return false;
+        BankAccount that = (BankAccount) o;
+        return Double.compare(balance, that.balance) == 0 && Objects.equals(transaction, that.transaction);
     }
 
     @Override
     public int hashCode() {
-
+        return Objects.hash(transaction, balance);
     }
 
     @Override
     public String toString() {
-
+        return "\n" +
+                "accountNumber: " + "\n" +
+                "balance: " + balance;
     }
 
-    public String getEmailAddress() {
 
+    public double getBalance() {
+        return balance;
     }
 
-    public void setEmailAddress(String emailAddress) {
-
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
-    public int getDateOfBirth() {
-
+    public List<Transaction> getTransaction() {
+        return transaction;
     }
 
-    public void setDateOfBirth(int dateOfBirth) {
-
+    public void setTransaction(List<Transaction> transaction) {
+        this.transaction = transaction;
     }
 }

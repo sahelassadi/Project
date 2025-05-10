@@ -1,6 +1,5 @@
 package org.example;
 
 public interface CustomerDetails {
-    public void UpdateCustomerDetails();
-    public void ReviewTransactionHistory();
+     void ViewAccountDetails(String username, Employee employee);
 }
